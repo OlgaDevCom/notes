@@ -1,0 +1,33 @@
+{
+  "scriptVersion": 1,
+  "flutter": "3.47.0",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "codegen": [
+    "gen-l10n",
+    "build_runner"
+  ],
+  "firebaseMode": "none",
+  "android": {
+    "minSdk": 24,
+    "gradle": "kts",
+    "java": 17
+  },
+  "ios": {
+    "minimumVersion": "15.0",
+    "dependencyManager": "cocoapods"
+  },
+  "checks": [
+    "bootstrap",
+    "format",
+    "analyze",
+    "test",
+    "build_android_debug",
+    "build_android_release",
+    "build_ios_simulator",
+    "screen_gen_android",
+    "screen_gen_ios"
+  ]
+}
