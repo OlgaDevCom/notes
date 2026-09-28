@@ -1,0 +1,338 @@
+{
+  "configVersion": 1,
+  "preset": "minimal",
+  "design": {
+    "version": 2,
+    "preset": "starter",
+    "theme": {
+      "preset": "neutral",
+      "light": {
+        "primary": "#45464F",
+        "onPrimary": "#FFFFFF",
+        "secondary": "#5E5F69",
+        "onSecondary": "#FFFFFF",
+        "background": "#F7F7F8",
+        "surface": "#FFFFFF",
+        "onSurface": "#1B1B1F",
+        "outline": "#777780",
+        "error": "#BA1A1A",
+        "selected": "#E4E2EC",
+        "onSelected": "#1B1B1F"
+      },
+      "dark": {
+        "primary": "#C6C5D0",
+        "onPrimary": "#2F3038",
+        "secondary": "#C5C5D0",
+        "onSecondary": "#303039",
+        "background": "#121318",
+        "surface": "#1B1B21",
+        "onSurface": "#E4E1E9",
+        "outline": "#92919A",
+        "error": "#FFB4AB",
+        "selected": "#44434C",
+        "onSelected": "#E4E1E9"
+      },
+      "radius": 16,
+      "spacing": 16,
+      "typographyScale": 1
+    },
+    "navigation": "bottom",
+    "screens": [
+      {
+        "id": "home",
+        "name": "Home",
+        "route": "/",
+        "layout": "scroll",
+        "destination": "top",
+        "icon": "home",
+        "widgets": [
+          {
+            "id": "home-title",
+            "type": "appBar",
+            "label": "Home",
+            "children": []
+          },
+          {
+            "id": "home-item-1",
+            "type": "text",
+            "label": "Welcome to your app",
+            "children": []
+          },
+          {
+            "id": "home-item-2",
+            "type": "card",
+            "label": "Featured",
+            "children": [
+              {
+                "id": "home-item-2-text",
+                "type": "text",
+                "label": "Featured",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "home-item-3",
+            "type": "card",
+            "label": "Recent activity",
+            "children": [
+              {
+                "id": "home-item-3-text",
+                "type": "text",
+                "label": "Recent activity",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "home-action",
+            "type": "button",
+            "label": "Continue from Home",
+            "action": {
+              "type": "navigate",
+              "screenId": "profile"
+            },
+            "children": []
+          },
+          {
+            "id": "survey-device-ble",
+            "type": "button",
+            "label": "Find nearby devices",
+            "action": {
+              "type": "scanBle"
+            },
+            "children": []
+          },
+          {
+            "id": "survey-device-gallery",
+            "type": "button",
+            "label": "Choose a photo",
+            "action": {
+              "type": "pickMedia"
+            },
+            "children": []
+          },
+          {
+            "id": "survey-device-camera",
+            "type": "button",
+            "label": "Take a photo",
+            "action": {
+              "type": "capturePhoto"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "profile",
+        "name": "Profile",
+        "route": "/screens/profile",
+        "layout": "scroll",
+        "destination": "top",
+        "icon": "person",
+        "widgets": [
+          {
+            "id": "profile-title",
+            "type": "appBar",
+            "label": "Profile",
+            "children": []
+          },
+          {
+            "id": "profile-item-1",
+            "type": "text",
+            "label": "Your profile",
+            "children": []
+          },
+          {
+            "id": "profile-item-2",
+            "type": "card",
+            "label": "Account details",
+            "children": [
+              {
+                "id": "profile-item-2-text",
+                "type": "text",
+                "label": "Account details",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "profile-action",
+            "type": "button",
+            "label": "Continue from Profile",
+            "action": {
+              "type": "navigate",
+              "screenId": "settings"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "settings",
+        "name": "Settings",
+        "route": "/screens/settings",
+        "layout": "scroll",
+        "destination": "top",
+        "icon": "settings",
+        "widgets": [
+          {
+            "id": "settings-title",
+            "type": "appBar",
+            "label": "Settings",
+            "children": []
+          },
+          {
+            "id": "settings-item-1",
+            "type": "text",
+            "label": "Preferences",
+            "children": []
+          },
+          {
+            "id": "settings-item-2",
+            "type": "card",
+            "label": "Notifications",
+            "children": [
+              {
+                "id": "settings-item-2-text",
+                "type": "text",
+                "label": "Notifications",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "settings-action",
+            "type": "button",
+            "label": "Continue from Settings",
+            "action": {
+              "type": "navigate",
+              "screenId": "home"
+            },
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "app": {
+    "name": "Notes",
+    "projectName": "notes",
+    "organization": "com.example",
+    "description": "A Flutter application.",
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "minAndroidSdk": 24,
+    "minIosVersion": "15.0"
+  },
+  "architecture": {
+    "style": "feature_first",
+    "stateManagement": "riverpod",
+    "router": "go_router",
+    "models": "freezed",
+    "serialization": "json_serializable"
+  },
+  "backend": {
+    "primary": "none",
+    "cloudflare": {
+      "enabled": false,
+      "baseUrl": null,
+      "authentication": {
+        "type": "none",
+        "refreshToken": false
+      },
+      "capabilities": {
+        "d1": false,
+        "r2": false,
+        "kv": false,
+        "durableObjects": false,
+        "queues": false,
+        "workersAi": false,
+        "websocket": false
+      },
+      "r2Upload": {
+        "mode": "presigned_url"
+      }
+    },
+    "firebase": {
+      "enabled": false,
+      "mode": "demo",
+      "services": {
+        "messaging": false,
+        "analytics": false,
+        "crashlytics": false,
+        "remoteConfig": false,
+        "auth": false,
+        "firestore": false,
+        "storage": false,
+        "performance": false
+      }
+    },
+    "customServer": {
+      "enabled": false,
+      "baseUrl": null,
+      "websocket": false,
+      "authentication": {
+        "type": "none",
+        "refreshToken": false
+      }
+    }
+  },
+  "storage": {
+    "database": "none",
+    "secureStorage": false,
+    "preferences": true
+  },
+  "features": {
+    "auth": {
+      "enabled": false,
+      "providers": [
+        "email"
+      ]
+    },
+    "profile": {
+      "enabled": false
+    },
+    "settings": {
+      "enabled": true
+    },
+    "notifications": {
+      "enabled": false,
+      "provider": "none"
+    }
+  },
+  "modules": {
+    "localization": {
+      "enabled": true,
+      "defaultLocale": "en",
+      "supportedLocales": [
+        "en"
+      ]
+    },
+    "theme": {
+      "enabled": true,
+      "modes": [
+        "light",
+        "dark",
+        "system"
+      ]
+    },
+    "logging": {
+      "enabled": true
+    },
+    "analytics": {
+      "enabled": false
+    }
+  },
+  "screenGen": {
+    "enabled": true
+  },
+  "automation": {
+    "ci": "github_actions",
+    "format": true,
+    "analyze": true,
+    "test": true
+  }
+}

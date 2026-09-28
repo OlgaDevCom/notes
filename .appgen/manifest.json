@@ -1,0 +1,59 @@
+{
+  "appgenVersion": 1,
+  "catalogVersion": 8,
+  "configVersion": 1,
+  "configHash": "6d2e4f1a1cb239172631ed45bd6db56fa12a5c313b52ca905baa9af8aeb582f2",
+  "preset": "minimal",
+  "flutter": {
+    "sdk": "3.47.0",
+    "dart": "^3.13.0"
+  },
+  "modules": [
+    "app_base",
+    "core",
+    "testing",
+    "logging",
+    "theme",
+    "localization",
+    "state_riverpod",
+    "router_go_router",
+    "app_design",
+    "media_picker",
+    "ble_scanner",
+    "models_freezed",
+    "preferences",
+    "settings",
+    "github_actions",
+    "screen_gen"
+  ],
+  "dependencies": {
+    "device_info_plus": "^12.3.0",
+    "flutter": "sdk:flutter",
+    "flutter_localizations": "sdk:flutter",
+    "flutter_reactive_ble": "^5.5.0",
+    "flutter_riverpod": "^3.4.3",
+    "freezed_annotation": "^3.1.0",
+    "go_router": "^18.0.1",
+    "image_picker": "^1.2.3",
+    "intl": "^0.20.3",
+    "json_annotation": "^4.12.0",
+    "logging": "^1.3.0",
+    "permission_handler": "^12.0.1",
+    "riverpod_annotation": "^4.0.7",
+    "shared_preferences": "^2.5.5"
+  },
+  "devDependencies": {
+    "build_runner": "^2.16.1",
+    "flutter_lints": "^6.0.0",
+    "flutter_test": "sdk:flutter",
+    "freezed": "^4.0.2",
+    "integration_test": "sdk:flutter",
+    "json_serializable": "^6.14.1",
+    "mocktail": "^1.0.5",
+    "riverpod_generator": "^4.0.9"
+  },
+  "manualSteps": [
+    "Add the iOS signing certificate, provisioning profile and App Store Connect API key as repository secrets.",
+    "Add the Android keystore and its passwords as repository secrets."
+  ]
+}

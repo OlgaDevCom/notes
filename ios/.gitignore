@@ -1,0 +1,15 @@
+**/dgph
+*.mode1v3
+*.mode2v3
+*.moved-aside
+*.pbxuser
+*.perspectivev3
+**/*sync/
+**/DerivedData/
+Icon?
+**/Pods/
+**/.symlinks/
+xcuserdata
+Flutter/Generated.xcconfig
+Flutter/ephemeral/
+Runner/GeneratedPluginRegistrant.*

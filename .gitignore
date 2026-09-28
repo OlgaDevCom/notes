@@ -1,0 +1,30 @@
+# Flutter
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Generated code: rebuilt by build_runner and gen-l10n, never reviewed.
+*.g.dart
+*.freezed.dart
+lib/l10n/app_localizations*.dart
+
+# Secrets. Nothing here is ever generated, and nothing here belongs in git.
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.mobileprovision
+key.properties
+lib/firebase_options.dart
+ios/Runner/GoogleService-Info.plist
+android/app/google-services.json

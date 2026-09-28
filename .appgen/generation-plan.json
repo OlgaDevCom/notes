@@ -1,0 +1,864 @@
+{
+  "appgenVersion": 1,
+  "catalogVersion": 8,
+  "configHash": "6d2e4f1a1cb239172631ed45bd6db56fa12a5c313b52ca905baa9af8aeb582f2",
+  "preset": "minimal",
+  "flutter": {
+    "sdk": "3.47.0",
+    "dart": "^3.13.0"
+  },
+  "modules": [
+    {
+      "id": "app_base",
+      "description": "Flutter project skeleton with checked-in Android/iOS scaffolds, entry point, bootstrap, CI profile and AppGen manifest.",
+      "order": 100,
+      "provides": [
+        "app_shell"
+      ],
+      "requires": [],
+      "files": [
+        ".appgen/ci-profile.json",
+        ".appgen/generation-plan.json",
+        ".appgen/manifest.json",
+        ".appgen/resolved-config.json",
+        ".gitignore",
+        "README.md",
+        "analysis_options.yaml",
+        "android/.gitignore",
+        "android/app/build.gradle.kts",
+        "android/app/src/debug/AndroidManifest.xml",
+        "android/app/src/main/AndroidManifest.xml",
+        "android/app/src/main/kotlin/com/example/notes/MainActivity.kt",
+        "android/app/src/main/res/drawable-v21/launch_background.xml",
+        "android/app/src/main/res/drawable/launch_background.xml",
+        "android/app/src/main/res/values-night/styles.xml",
+        "android/app/src/main/res/values/styles.xml",
+        "android/app/src/profile/AndroidManifest.xml",
+        "android/build.gradle.kts",
+        "android/gradle.properties",
+        "android/settings.gradle.kts",
+        "ios/.gitignore",
+        "ios/Flutter/AppFrameworkInfo.plist",
+        "ios/Flutter/Debug.xcconfig",
+        "ios/Flutter/Release.xcconfig",
+        "ios/Runner.xcodeproj/project.pbxproj",
+        "ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata",
+        "ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme",
+        "ios/Runner.xcworkspace/contents.xcworkspacedata",
+        "ios/Runner/AppDelegate.swift",
+        "ios/Runner/Base.lproj/LaunchScreen.storyboard",
+        "ios/Runner/Base.lproj/Main.storyboard",
+        "ios/Runner/Info.plist",
+        "ios/Runner/Runner-Bridging-Header.h",
+        "ios/Runner/SceneDelegate.swift",
+        "ios/RunnerTests/RunnerTests.swift",
+        "lib/app/app.dart",
+        "lib/app/bootstrap.dart",
+        "lib/main.dart",
+        "pubspec.yaml",
+        "scripts/appgen-ci.sh",
+        "scripts/bootstrap.sh",
+        "test/app_smoke_test.dart"
+      ]
+    },
+    {
+      "id": "core",
+      "description": "Environments, app config and the single failure model every layer maps onto.",
+      "order": 110,
+      "provides": [
+        "core"
+      ],
+      "requires": [
+        "app_base"
+      ],
+      "files": [
+        ".env.example",
+        "lib/core/config/app_config.dart",
+        "lib/core/config/app_environment.dart",
+        "lib/core/errors/app_failure.dart",
+        "test/core/errors/app_failure_test.dart"
+      ]
+    },
+    {
+      "id": "testing",
+      "description": "Widget test harness the generated tests build on.",
+      "order": 120,
+      "provides": [
+        "test_harness"
+      ],
+      "requires": [
+        "app_base"
+      ],
+      "files": [
+        "test/helpers/pump_app.dart"
+      ]
+    },
+    {
+      "id": "logging",
+      "description": "Redacting logger: tokens, cookies and authorization headers never reach the log.",
+      "order": 130,
+      "provides": [
+        "logging"
+      ],
+      "requires": [
+        "core"
+      ],
+      "files": [
+        "lib/core/logging/app_logger.dart",
+        "test/core/logging/app_logger_test.dart"
+      ]
+    },
+    {
+      "id": "theme",
+      "description": "Light/dark theme and the mode the app remembers.",
+      "order": 140,
+      "provides": [
+        "theme"
+      ],
+      "requires": [
+        "app_base"
+      ],
+      "files": [
+        "lib/app/theme/app_theme.dart",
+        "lib/app/theme/theme_mode_controller.dart"
+      ]
+    },
+    {
+      "id": "localization",
+      "description": "ARB localization with the declared locales and the generated delegates.",
+      "order": 150,
+      "provides": [
+        "localization"
+      ],
+      "requires": [
+        "app_base"
+      ],
+      "files": [
+        "l10n.yaml",
+        "lib/l10n/app_en.arb"
+      ]
+    },
+    {
+      "id": "state_riverpod",
+      "description": "Riverpod: dependency injection and the providers the app boots with.",
+      "order": 200,
+      "provides": [
+        "state_management"
+      ],
+      "requires": [
+        "app_base"
+      ],
+      "files": [
+        "lib/app/providers/app_providers.dart"
+      ]
+    },
+    {
+      "id": "router_go_router",
+      "description": "GoRouter: typed destinations, the auth guard and the not-found route.",
+      "order": 210,
+      "provides": [
+        "router"
+      ],
+      "requires": [
+        "state_riverpod"
+      ],
+      "files": [
+        "lib/app/router/app_router.dart",
+        "lib/app/router/home_screen.dart",
+        "lib/app/router/not_found_screen.dart",
+        "lib/app/router/routes.dart",
+        "test/app/router/app_router_test.dart"
+      ]
+    },
+    {
+      "id": "app_design",
+      "description": "Versioned screen configuration rendered as native Flutter widgets.",
+      "order": 130,
+      "provides": [
+        "app_design"
+      ],
+      "requires": [
+        "app_base",
+        "router_go_router"
+      ],
+      "files": [
+        "lib/app/design/app_design.dart"
+      ]
+    },
+    {
+      "id": "media_picker",
+      "description": "Pick a photo from the system library or capture one with the camera, then show it in the screen renderer.",
+      "order": 135,
+      "provides": [
+        "media_picker"
+      ],
+      "requires": [
+        "app_base",
+        "app_design"
+      ],
+      "files": [
+        "lib/services/media/media_picker_service.dart"
+      ]
+    },
+    {
+      "id": "ble_scanner",
+      "description": "Foreground BLE device discovery with explicit platform permissions and a cancellable bounded scan.",
+      "order": 136,
+      "provides": [
+        "ble_scan"
+      ],
+      "requires": [
+        "app_base",
+        "app_design"
+      ],
+      "files": [
+        "lib/services/bluetooth/ble_scan_service.dart"
+      ]
+    },
+    {
+      "id": "models_freezed",
+      "description": "Freezed models and json_serializable, wired into one build_runner pass.",
+      "order": 220,
+      "provides": [
+        "models"
+      ],
+      "requires": [
+        "app_base"
+      ],
+      "files": [
+        "build.yaml"
+      ]
+    },
+    {
+      "id": "preferences",
+      "description": "Preferences for non-secret settings: locale, theme mode, onboarding.",
+      "order": 520,
+      "provides": [
+        "preferences"
+      ],
+      "requires": [
+        "core"
+      ],
+      "files": [
+        "lib/core/storage/preferences_store.dart"
+      ]
+    },
+    {
+      "id": "settings",
+      "description": "Settings screen for theme, locale and the app’s own switches.",
+      "order": 630,
+      "provides": [
+        "settings"
+      ],
+      "requires": [
+        "state_riverpod",
+        "router_go_router"
+      ],
+      "files": [
+        "lib/features/settings/presentation/controllers/settings_controller.dart",
+        "lib/features/settings/presentation/screens/settings_screen.dart"
+      ]
+    },
+    {
+      "id": "github_actions",
+      "description": "Release workflows the platform dispatches, plus the analyze/test workflow AppGen verifies with.",
+      "order": 700,
+      "provides": [
+        "ci"
+      ],
+      "requires": [
+        "app_base"
+      ],
+      "files": [
+        ".github/workflows/android-release.yml",
+        ".github/workflows/appgen-verify.yml",
+        ".github/workflows/ios-release.yml",
+        "scripts/archive.sh"
+      ]
+    },
+    {
+      "id": "screen_gen",
+      "description": "Screen Gen capture: the workflow, the driver and the paths the platform reads.",
+      "order": 710,
+      "provides": [
+        "screen_gen"
+      ],
+      "requires": [
+        "github_actions",
+        "localization"
+      ],
+      "files": [
+        ".github/workflows/android-screenshots.yml",
+        ".github/workflows/ios-screenshots.yml",
+        "integration_test/screen_gen_test.dart",
+        "lib/screen_gen.dart",
+        "scripts/screen-gen-capture.sh",
+        "test_driver/screen_gen.dart"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "device_info_plus",
+      "constraint": "^12.3.0",
+      "requiredBy": [
+        "ble_scanner"
+      ]
+    },
+    {
+      "name": "flutter",
+      "constraint": null,
+      "sdk": "flutter",
+      "requiredBy": [
+        "app_base"
+      ]
+    },
+    {
+      "name": "flutter_localizations",
+      "constraint": null,
+      "sdk": "flutter",
+      "requiredBy": [
+        "localization"
+      ]
+    },
+    {
+      "name": "flutter_reactive_ble",
+      "constraint": "^5.5.0",
+      "requiredBy": [
+        "ble_scanner"
+      ]
+    },
+    {
+      "name": "flutter_riverpod",
+      "constraint": "^3.4.3",
+      "requiredBy": [
+        "state_riverpod"
+      ]
+    },
+    {
+      "name": "freezed_annotation",
+      "constraint": "^3.1.0",
+      "requiredBy": [
+        "models_freezed"
+      ]
+    },
+    {
+      "name": "go_router",
+      "constraint": "^18.0.1",
+      "requiredBy": [
+        "router_go_router"
+      ]
+    },
+    {
+      "name": "image_picker",
+      "constraint": "^1.2.3",
+      "requiredBy": [
+        "media_picker"
+      ]
+    },
+    {
+      "name": "intl",
+      "constraint": "^0.20.3",
+      "requiredBy": [
+        "localization"
+      ]
+    },
+    {
+      "name": "json_annotation",
+      "constraint": "^4.12.0",
+      "requiredBy": [
+        "models_freezed"
+      ]
+    },
+    {
+      "name": "logging",
+      "constraint": "^1.3.0",
+      "requiredBy": [
+        "logging"
+      ]
+    },
+    {
+      "name": "permission_handler",
+      "constraint": "^12.0.1",
+      "requiredBy": [
+        "ble_scanner"
+      ]
+    },
+    {
+      "name": "riverpod_annotation",
+      "constraint": "^4.0.7",
+      "requiredBy": [
+        "state_riverpod"
+      ]
+    },
+    {
+      "name": "shared_preferences",
+      "constraint": "^2.5.5",
+      "requiredBy": [
+        "media_picker",
+        "preferences"
+      ]
+    }
+  ],
+  "devDependencies": [
+    {
+      "name": "build_runner",
+      "constraint": "^2.16.1",
+      "requiredBy": [
+        "models_freezed",
+        "state_riverpod"
+      ]
+    },
+    {
+      "name": "flutter_lints",
+      "constraint": "^6.0.0",
+      "requiredBy": [
+        "app_base"
+      ]
+    },
+    {
+      "name": "flutter_test",
+      "constraint": null,
+      "sdk": "flutter",
+      "requiredBy": [
+        "app_base"
+      ]
+    },
+    {
+      "name": "freezed",
+      "constraint": "^4.0.2",
+      "requiredBy": [
+        "models_freezed"
+      ]
+    },
+    {
+      "name": "integration_test",
+      "constraint": null,
+      "sdk": "flutter",
+      "requiredBy": [
+        "screen_gen"
+      ]
+    },
+    {
+      "name": "json_serializable",
+      "constraint": "^6.14.1",
+      "requiredBy": [
+        "models_freezed"
+      ]
+    },
+    {
+      "name": "mocktail",
+      "constraint": "^1.0.5",
+      "requiredBy": [
+        "testing"
+      ]
+    },
+    {
+      "name": "riverpod_generator",
+      "constraint": "^4.0.9",
+      "requiredBy": [
+        "state_riverpod"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": ".appgen/ci-profile.json",
+      "module": "app_base"
+    },
+    {
+      "path": ".appgen/generation-plan.json",
+      "module": "app_base"
+    },
+    {
+      "path": ".appgen/manifest.json",
+      "module": "app_base"
+    },
+    {
+      "path": ".appgen/resolved-config.json",
+      "module": "app_base"
+    },
+    {
+      "path": ".env.example",
+      "module": "core"
+    },
+    {
+      "path": ".github/workflows/android-release.yml",
+      "module": "github_actions"
+    },
+    {
+      "path": ".github/workflows/android-screenshots.yml",
+      "module": "screen_gen"
+    },
+    {
+      "path": ".github/workflows/appgen-verify.yml",
+      "module": "github_actions"
+    },
+    {
+      "path": ".github/workflows/ios-release.yml",
+      "module": "github_actions"
+    },
+    {
+      "path": ".github/workflows/ios-screenshots.yml",
+      "module": "screen_gen"
+    },
+    {
+      "path": ".gitignore",
+      "module": "app_base"
+    },
+    {
+      "path": "README.md",
+      "module": "app_base"
+    },
+    {
+      "path": "analysis_options.yaml",
+      "module": "app_base"
+    },
+    {
+      "path": "android/.gitignore",
+      "module": "app_base"
+    },
+    {
+      "path": "android/app/build.gradle.kts",
+      "module": "app_base"
+    },
+    {
+      "path": "android/app/src/debug/AndroidManifest.xml",
+      "module": "app_base"
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "module": "app_base"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/example/notes/MainActivity.kt",
+      "module": "app_base"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-v21/launch_background.xml",
+      "module": "app_base"
+    },
+    {
+      "path": "android/app/src/main/res/drawable/launch_background.xml",
+      "module": "app_base"
+    },
+    {
+      "path": "android/app/src/main/res/values-night/styles.xml",
+      "module": "app_base"
+    },
+    {
+      "path": "android/app/src/main/res/values/styles.xml",
+      "module": "app_base"
+    },
+    {
+      "path": "android/app/src/profile/AndroidManifest.xml",
+      "module": "app_base"
+    },
+    {
+      "path": "android/build.gradle.kts",
+      "module": "app_base"
+    },
+    {
+      "path": "android/gradle.properties",
+      "module": "app_base"
+    },
+    {
+      "path": "android/settings.gradle.kts",
+      "module": "app_base"
+    },
+    {
+      "path": "build.yaml",
+      "module": "models_freezed"
+    },
+    {
+      "path": "integration_test/screen_gen_test.dart",
+      "module": "screen_gen"
+    },
+    {
+      "path": "ios/.gitignore",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Flutter/AppFrameworkInfo.plist",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Flutter/Debug.xcconfig",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Flutter/Release.xcconfig",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Runner.xcodeproj/project.pbxproj",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Runner.xcworkspace/contents.xcworkspacedata",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Runner/AppDelegate.swift",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Runner/Base.lproj/LaunchScreen.storyboard",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Runner/Base.lproj/Main.storyboard",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Runner/Info.plist",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Runner/Runner-Bridging-Header.h",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/Runner/SceneDelegate.swift",
+      "module": "app_base"
+    },
+    {
+      "path": "ios/RunnerTests/RunnerTests.swift",
+      "module": "app_base"
+    },
+    {
+      "path": "l10n.yaml",
+      "module": "localization"
+    },
+    {
+      "path": "lib/app/app.dart",
+      "module": "app_base"
+    },
+    {
+      "path": "lib/app/bootstrap.dart",
+      "module": "app_base"
+    },
+    {
+      "path": "lib/app/design/app_design.dart",
+      "module": "app_design"
+    },
+    {
+      "path": "lib/app/providers/app_providers.dart",
+      "module": "state_riverpod"
+    },
+    {
+      "path": "lib/app/router/app_router.dart",
+      "module": "router_go_router"
+    },
+    {
+      "path": "lib/app/router/home_screen.dart",
+      "module": "router_go_router"
+    },
+    {
+      "path": "lib/app/router/not_found_screen.dart",
+      "module": "router_go_router"
+    },
+    {
+      "path": "lib/app/router/routes.dart",
+      "module": "router_go_router"
+    },
+    {
+      "path": "lib/app/theme/app_theme.dart",
+      "module": "theme"
+    },
+    {
+      "path": "lib/app/theme/theme_mode_controller.dart",
+      "module": "theme"
+    },
+    {
+      "path": "lib/core/config/app_config.dart",
+      "module": "core"
+    },
+    {
+      "path": "lib/core/config/app_environment.dart",
+      "module": "core"
+    },
+    {
+      "path": "lib/core/errors/app_failure.dart",
+      "module": "core"
+    },
+    {
+      "path": "lib/core/logging/app_logger.dart",
+      "module": "logging"
+    },
+    {
+      "path": "lib/core/storage/preferences_store.dart",
+      "module": "preferences"
+    },
+    {
+      "path": "lib/features/settings/presentation/controllers/settings_controller.dart",
+      "module": "settings"
+    },
+    {
+      "path": "lib/features/settings/presentation/screens/settings_screen.dart",
+      "module": "settings"
+    },
+    {
+      "path": "lib/l10n/app_en.arb",
+      "module": "localization"
+    },
+    {
+      "path": "lib/main.dart",
+      "module": "app_base"
+    },
+    {
+      "path": "lib/screen_gen.dart",
+      "module": "screen_gen"
+    },
+    {
+      "path": "lib/services/bluetooth/ble_scan_service.dart",
+      "module": "ble_scanner"
+    },
+    {
+      "path": "lib/services/media/media_picker_service.dart",
+      "module": "media_picker"
+    },
+    {
+      "path": "pubspec.yaml",
+      "module": "app_base"
+    },
+    {
+      "path": "scripts/appgen-ci.sh",
+      "module": "app_base"
+    },
+    {
+      "path": "scripts/archive.sh",
+      "module": "github_actions"
+    },
+    {
+      "path": "scripts/bootstrap.sh",
+      "module": "app_base"
+    },
+    {
+      "path": "scripts/screen-gen-capture.sh",
+      "module": "screen_gen"
+    },
+    {
+      "path": "test/app/router/app_router_test.dart",
+      "module": "router_go_router"
+    },
+    {
+      "path": "test/app_smoke_test.dart",
+      "module": "app_base"
+    },
+    {
+      "path": "test/core/errors/app_failure_test.dart",
+      "module": "core"
+    },
+    {
+      "path": "test/core/logging/app_logger_test.dart",
+      "module": "logging"
+    },
+    {
+      "path": "test/helpers/pump_app.dart",
+      "module": "testing"
+    },
+    {
+      "path": "test_driver/screen_gen.dart",
+      "module": "screen_gen"
+    }
+  ],
+  "manualSteps": [
+    "Add the iOS signing certificate, provisioning profile and App Store Connect API key as repository secrets.",
+    "Add the Android keystore and its passwords as repository secrets."
+  ],
+  "permissions": [
+    {
+      "feature": "Bluetooth LE scan",
+      "platform": "android",
+      "kind": "feature",
+      "name": "android.hardware.bluetooth_le",
+      "reason": "Declare optional BLE hardware so devices without Bluetooth can still install the app."
+    },
+    {
+      "feature": "Bluetooth LE scan",
+      "platform": "android",
+      "kind": "manifest",
+      "name": "android.permission.ACCESS_COARSE_LOCATION",
+      "reason": "Legacy Android BLE scanning compatibility, limited to Android 11 and earlier."
+    },
+    {
+      "feature": "Bluetooth LE scan",
+      "platform": "android",
+      "kind": "manifest",
+      "name": "android.permission.ACCESS_FINE_LOCATION",
+      "reason": "Legacy Android BLE scanning requirement, limited to Android 11 and earlier."
+    },
+    {
+      "feature": "Bluetooth LE scan",
+      "platform": "android",
+      "kind": "manifest",
+      "name": "android.permission.BLUETOOTH",
+      "reason": "Legacy Bluetooth permission, limited to Android 11 and earlier."
+    },
+    {
+      "feature": "Bluetooth LE scan",
+      "platform": "android",
+      "kind": "manifest",
+      "name": "android.permission.BLUETOOTH_ADMIN",
+      "reason": "Legacy Bluetooth scanning permission, limited to Android 11 and earlier."
+    },
+    {
+      "feature": "Bluetooth LE scan",
+      "platform": "android",
+      "kind": "manifest",
+      "name": "android.permission.BLUETOOTH_CONNECT",
+      "reason": "Android 12 and later require nearby-device access for Bluetooth state and device metadata."
+    },
+    {
+      "feature": "Bluetooth LE scan",
+      "platform": "android",
+      "kind": "manifest",
+      "name": "android.permission.BLUETOOTH_SCAN",
+      "reason": "Android 12 and later require this foreground scan permission; neverForLocation matches the non-location scan flow."
+    },
+    {
+      "feature": "Bluetooth LE scan",
+      "platform": "android",
+      "kind": "runtime",
+      "name": "Nearby devices / legacy location authorization",
+      "reason": "The operating system can deny scan access even when manifest entries exist; scan failures are surfaced with a permission recovery hint."
+    },
+    {
+      "feature": "Bluetooth LE scan",
+      "platform": "ios",
+      "kind": "runtime",
+      "name": "CoreBluetooth authorization",
+      "reason": "iOS presents the Bluetooth authorization prompt when the app first scans; denied access is reported by the scan action."
+    },
+    {
+      "feature": "Bluetooth LE scan",
+      "platform": "ios",
+      "kind": "usage-description",
+      "name": "NSBluetoothAlwaysUsageDescription",
+      "reason": "Explain why the app discovers nearby Bluetooth devices."
+    },
+    {
+      "feature": "Camera",
+      "platform": "ios",
+      "kind": "usage-description",
+      "name": "NSCameraUsageDescription",
+      "reason": "Explain why the app captures a photo."
+    },
+    {
+      "feature": "Photo picker",
+      "platform": "ios",
+      "kind": "usage-description",
+      "name": "NSPhotoLibraryUsageDescription",
+      "reason": "Explain why the app opens the system photo picker."
+    }
+  ]
+}

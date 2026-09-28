@@ -1,0 +1,43 @@
+{
+  "@@locale": "en",
+  "appTitle": "Notes",
+  "@appTitle": {
+    "description": "The application name, shown in the task switcher and on the home screen."
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Title of the settings screen."
+  },
+  "settingsAppearance": "Appearance",
+  "@settingsAppearance": {
+    "description": "Heading of the appearance section on the settings screen."
+  },
+  "themeModeSystem": "Match the system",
+  "@themeModeSystem": {
+    "description": "Theme option that follows the device setting."
+  },
+  "themeModeLight": "Light",
+  "@themeModeLight": {
+    "description": "Theme option: always light."
+  },
+  "themeModeDark": "Dark",
+  "@themeModeDark": {
+    "description": "Theme option: always dark."
+  },
+  "notFoundTitle": "Page not found",
+  "@notFoundTitle": {
+    "description": "Title shown when a route does not exist."
+  },
+  "notFoundBody": "That address does not exist in this app.",
+  "@notFoundBody": {
+    "description": "Body shown when a route does not exist."
+  },
+  "actionBack": "Go back",
+  "@actionBack": {
+    "description": "Button that returns to the previous screen."
+  },
+  "actionRetry": "Try again",
+  "@actionRetry": {
+    "description": "Button that retries the action that failed."
+  }
+}
